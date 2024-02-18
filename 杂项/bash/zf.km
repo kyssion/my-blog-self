@@ -1,0 +1,659 @@
+{
+    "root": {
+        "data": {
+            "id": "cz7xmjscxvk0",
+            "created": 1708231774918,
+            "text": "中央国家机关",
+            "expandState": "expand"
+        },
+        "children": [
+            {
+                "data": {
+                    "id": "cz7ykslyftc0",
+                    "created": 1708234458503,
+                    "text": "省信息"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cz7ykyy6im80",
+                            "created": 1708234472303,
+                            "text": "山东省"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cz7yl1njg800",
+                                    "created": 1708234478190,
+                                    "text": "威海市"
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cz7xrw5lp540",
+                    "created": 1708232193661,
+                    "text": "国家主席",
+                    "expandState": "expand"
+                },
+                "children": []
+            },
+            {
+                "data": {
+                    "id": "cz7xmyck2x40",
+                    "created": 1708231806614,
+                    "text": "全国人民代表大会",
+                    "expandState": "collapse"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cz7y6wekhb40",
+                            "created": 1708233369665,
+                            "text": "全国人民代表大会常委会",
+                            "expandState": "collapse"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cz7y7jc4iyo0",
+                                    "created": 1708233419584,
+                                    "text": "各省市县级常委会+乡级代表大会"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7y7h41g4w0",
+                                    "created": 1708233414741,
+                                    "text": "办公厅"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cz7y9hzue3k0",
+                                            "created": 1708233573393,
+                                            "text": "秘书局"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cz7y9laxgco0",
+                                            "created": 1708233580593,
+                                            "text": "研究室"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cz7y9okiz8w0",
+                                            "created": 1708233587704,
+                                            "text": "联络局"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cz7y9oqw9xs0",
+                                            "created": 1708233588089,
+                                            "text": "外事局"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cz7y9ovkk2o0",
+                                            "created": 1708233588372,
+                                            "text": "新闻局"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cz7y9oysi9c0",
+                                            "created": 1708233588566,
+                                            "text": "信访局"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cz7y9p1o2c00",
+                                            "created": 1708233588740,
+                                            "text": "人事局"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cz7y9p4bb0o0",
+                                            "created": 1708233588900,
+                                            "text": "离退休干部局"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cz7y9p6zfa00",
+                                            "created": 1708233589062,
+                                            "text": "机关事务管理局"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cz7y9p9glw00",
+                                            "created": 1708233589212,
+                                            "text": "机关党委"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cz7y9pccc2o0",
+                                            "created": 1708233589386,
+                                            "text": "机关纪委"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cz7y9pfbwyw0",
+                                            "created": 1708233589567,
+                                            "text": "机关工会"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cz7y9phqs400",
+                                            "created": 1708233589712,
+                                            "text": "机关服务中心"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cz7y9pkhyfk0",
+                                            "created": 1708233589879,
+                                            "text": "全国人大培训中心"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cz7y9pnmjj40",
+                                            "created": 1708233590068,
+                                            "text": "全国人大信息中心"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cz7y9ppvcq00",
+                                            "created": 1708233590204,
+                                            "text": "中国人大杂志社"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cz7y9psd5y00",
+                                            "created": 1708233590355,
+                                            "text": "全国人大图书馆"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cz7y9puzpw00",
+                                            "created": 1708233590513,
+                                            "text": "全国人大会议中心"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cz7y9pxiirs0",
+                                            "created": 1708233590666,
+                                            "text": "人民大会堂管理局"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cz7y2nwj75s0",
+                            "created": 1708233037704,
+                            "text": "民族委员会"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cz7y587fysw0",
+                            "created": 1708233238628,
+                            "text": "宪法和法律委员会"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cz7y5t0nsmg0",
+                            "created": 1708233283930,
+                            "text": "监察和司法委员会"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cz7y5xexlg00",
+                            "created": 1708233293500,
+                            "text": "财政经济委员会"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cz7y60a47fk0",
+                            "created": 1708233299739,
+                            "text": "教育科学文化卫生委员会"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cz7y65nrbqw0",
+                            "created": 1708233311448,
+                            "text": "外事委员会"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cz7y6gll98g0",
+                            "created": 1708233335261,
+                            "text": "华侨委员会"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cz7y6jbu7n40",
+                            "created": 1708233341202,
+                            "text": "环境与资源保护委员会"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cz7y6mx7uew0",
+                            "created": 1708233349025,
+                            "text": "农业与农村委员会"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cz7y6q0c5wg0",
+                            "created": 1708233355744,
+                            "text": "社会建设委员会"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cz7xmunci9c0",
+                    "created": 1708231798559,
+                    "text": "国务院",
+                    "expandState": "expand"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cz7y1ockf0g0",
+                            "created": 1708232960309,
+                            "text": "各省市县乡政府"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cz7ydcbtne80",
+                            "created": 1708233874513,
+                            "text": "组成部门",
+                            "expandState": "collapse"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国外交部"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国国家发展和改革委员会"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国科学技术部"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国国家民族事务委员会"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国人力资源和社会保障部"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国生态环境部"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国交通运输部"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国农业农村部"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国文化和旅游部"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国退役军人事务部"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中国人民银行"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国国防部"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国教育部"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国工业和信息化部"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国公安部"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国民政部"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国财政部"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国自然资源部"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国住房和城乡建设部"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国水利部"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国商务部"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国国家卫生健康委员会"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国应急管理部"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国审计署"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国外交部"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cz7ydhlmeeg0",
+                                    "created": 1708233885989,
+                                    "text": "中华人民共和国外交部"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cz7yg3yynh40",
+                            "created": 1708234091413,
+                            "text": "国务院直属特设机构",
+                            "expandState": "collapse"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cz7yg9p30ow0",
+                                    "created": 1708234103877,
+                                    "text": "国务院国有资产监督管理委员会"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cz7ygesjveg0",
+                            "created": 1708234114970,
+                            "text": "国务院直属机构"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cz7yia44f4w0",
+                            "created": 1708234261515,
+                            "text": "国务院办事机构"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cz7yin1jo940",
+                            "created": 1708234289657,
+                            "text": "国务院直属事业单位"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cz7xs3z1xaw0",
+                    "created": 1708232210679,
+                    "text": "监察委员会",
+                    "expandState": "collapse"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cz7y1wl8kcg0",
+                            "created": 1708232978248,
+                            "text": "各省市监察委"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cz7xsdolp400",
+                    "created": 1708232231815,
+                    "text": "最高法",
+                    "expandState": "collapse"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cz7y24a8kpk0",
+                            "created": 1708232994997,
+                            "text": "各省市乡政府"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cz7xsf0pfa00",
+                    "created": 1708232234724,
+                    "text": "最高检",
+                    "expandState": "collapse"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cz7y2b4tmdc0",
+                            "created": 1708233009907,
+                            "text": "各省市检察院"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cz7xsfqrosw0",
+                    "created": 1708232236299,
+                    "text": "军事委员会"
+                },
+                "children": []
+            }
+        ]
+    },
+    "template": "filetree",
+    "theme": "fresh-blue",
+    "version": "1.4.43"
+}
