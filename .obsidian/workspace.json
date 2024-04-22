@@ -1,0 +1,158 @@
+{
+  "main": {
+    "id": "dbb5ad3e30acc73d",
+    "type": "split",
+    "children": [
+      {
+        "id": "f100ce65e55ddb02",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "422ef45f44bec499",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "java-disruptor.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b877f6439c888da5",
+    "type": "split",
+    "children": [
+      {
+        "id": "f89e25717012bf60",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "276d6e9e5c5c41f2",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "2a7be5485cd3851f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "0e2f168536e7fbbb",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "cdc71bca084378de",
+    "type": "split",
+    "children": [
+      {
+        "id": "1fc2218dc640469c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4aaa4b6859ddb822",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "java-disruptor.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "857b971eee39907f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "java-disruptor.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "d3c22a28f214d732",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "778aadff30b7e818",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "java-disruptor.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "422ef45f44bec499",
+  "lastOpenFiles": [
+    "博客归档-20230405/postgresql/postgresql-学习记录(2)-postgresql用户权限解析.md",
+    "博客归档-20230405/postgresql/postgresql-学习记录(1).md",
+    "博客归档-20230405/idea使用_解决window下git乱码.md",
+    "博客归档-20230405/kkk.png",
+    "架构设计.md",
+    "杂项/bash/bash一些东西.md",
+    "博客归档-20230405/计算机网络/网络-详解http协议-基础概念.md"
+  ]
+}
