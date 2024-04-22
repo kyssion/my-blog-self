@@ -419,3 +419,273 @@ public class MyJobListener : IJobListener
 ```
 上边例子中，Listener执行的动作很简单，在Job执行前打印begin，执行后打印end，在实际开发中，我们可以在通过Listenter来记录job的执行日志
 
+# quartz 持久化和集群能力
+
+## JobStore介绍
+
+学习持久化和集群前我们先了解一下Quartz.net中的JobStore，JobStore用于追踪任务调度相关的所有数据，如Job，Trigger，Calendar等。Quartz.net 提供了两种JobStore:RAMJobStore,AdoJobStore。
+
+RAMJobStore
+　　RAMJobStore是最简单的JobStore，顾名思义这种JobStore将所有的数据都存放在内存中，这也是它运行速度快的原因，但是弊端也很明显:一旦应用结束或者遇到断电所有的数据都会丢失。RAMJobStore是默认的JobStore，我们也已通过下边的代码来显式设置使用的JobStore为RAMJobStore。
+
+```
+quartz.jobStore.type = Quartz.Simpl.RAMJobStore, Quartz
+```
+
+AdoJobStore
+　　AdoJobStore通过Ado.net将数据存储在数据库中，因此可以解决断电数据丢失的问题，但是因为要读写数据库所以效率相对较低。AdoJobStore官方支持的数据库有：MySql,SqlServer,Sqllite,Oracle等，当前AdoJobStore只有一种类型JobStoreTX，这一点不同于Jave版本，java版本还有JobStoreCMT类型。
+
+## Db持久化和集群配置
+
+Quartz.net配置数据库持久化和集群比较容易，可以分为简单的两步：
+
+### 第一步：添加数据库表
+　　我们首先要在数据库中添加一系列的表（在Quartz项目的database/tables文件夹下可以找到各种数据库表的生成脚本，Git地址https://github.com/quartznet/quartznet/tree/master/database/tables）。 以postgresql为例子
+
+```sql
+set client_min_messages = WARNING;
+DROP TABLE IF EXISTS qrtz_fired_triggers;
+DROP TABLE IF EXISTS qrtz_paused_trigger_grps;
+DROP TABLE IF EXISTS qrtz_scheduler_state;
+DROP TABLE IF EXISTS qrtz_locks;
+DROP TABLE IF EXISTS qrtz_simprop_triggers;
+DROP TABLE IF EXISTS qrtz_simple_triggers;
+DROP TABLE IF EXISTS qrtz_cron_triggers;
+DROP TABLE IF EXISTS qrtz_blob_triggers;
+DROP TABLE IF EXISTS qrtz_triggers;
+DROP TABLE IF EXISTS qrtz_job_details;
+DROP TABLE IF EXISTS qrtz_calendars;
+set client_min_messages = NOTICE;
+
+CREATE TABLE qrtz_job_details
+  (
+    sched_name TEXT NOT NULL,
+	job_name  TEXT NOT NULL,
+    job_group TEXT NOT NULL,
+    description TEXT NULL,
+    job_class_name   TEXT NOT NULL, 
+    is_durable BOOL NOT NULL,
+    is_nonconcurrent BOOL NOT NULL,
+    is_update_data BOOL NOT NULL,
+	requests_recovery BOOL NOT NULL,
+    job_data BYTEA NULL,
+    PRIMARY KEY (sched_name,job_name,job_group)
+);
+
+CREATE TABLE qrtz_triggers
+  (
+    sched_name TEXT NOT NULL,
+	trigger_name TEXT NOT NULL,
+    trigger_group TEXT NOT NULL,
+    job_name  TEXT NOT NULL, 
+    job_group TEXT NOT NULL,
+    description TEXT NULL,
+    next_fire_time BIGINT NULL,
+    prev_fire_time BIGINT NULL,
+    priority INTEGER NULL,
+    trigger_state TEXT NOT NULL,
+    trigger_type TEXT NOT NULL,
+    start_time BIGINT NOT NULL,
+    end_time BIGINT NULL,
+    calendar_name TEXT NULL,
+    misfire_instr SMALLINT NULL,
+    job_data BYTEA NULL,
+    PRIMARY KEY (sched_name,trigger_name,trigger_group),
+    FOREIGN KEY (sched_name,job_name,job_group) 
+		REFERENCES qrtz_job_details(sched_name,job_name,job_group) 
+);
+
+CREATE TABLE qrtz_simple_triggers
+  (
+    sched_name TEXT NOT NULL,
+	trigger_name TEXT NOT NULL,
+    trigger_group TEXT NOT NULL,
+    repeat_count BIGINT NOT NULL,
+    repeat_interval BIGINT NOT NULL,
+    times_triggered BIGINT NOT NULL,
+    PRIMARY KEY (sched_name,trigger_name,trigger_group),
+    FOREIGN KEY (sched_name,trigger_name,trigger_group) 
+		REFERENCES qrtz_triggers(sched_name,trigger_name,trigger_group) ON DELETE CASCADE
+);
+
+CREATE TABLE QRTZ_SIMPROP_TRIGGERS 
+  (
+    sched_name TEXT NOT NULL,
+    trigger_name TEXT NOT NULL ,
+    trigger_group TEXT NOT NULL ,
+    str_prop_1 TEXT NULL,
+    str_prop_2 TEXT NULL,
+    str_prop_3 TEXT NULL,
+    int_prop_1 INTEGER NULL,
+    int_prop_2 INTEGER NULL,
+    long_prop_1 BIGINT NULL,
+    long_prop_2 BIGINT NULL,
+    dec_prop_1 NUMERIC NULL,
+    dec_prop_2 NUMERIC NULL,
+    bool_prop_1 BOOL NULL,
+    bool_prop_2 BOOL NULL,
+	time_zone_id TEXT NULL,
+	PRIMARY KEY (sched_name,trigger_name,trigger_group),
+    FOREIGN KEY (sched_name,trigger_name,trigger_group) 
+		REFERENCES qrtz_triggers(sched_name,trigger_name,trigger_group) ON DELETE CASCADE
+);
+
+CREATE TABLE qrtz_cron_triggers
+  (
+    sched_name TEXT NOT NULL,
+    trigger_name TEXT NOT NULL,
+    trigger_group TEXT NOT NULL,
+    cron_expression TEXT NOT NULL,
+    time_zone_id TEXT,
+    PRIMARY KEY (sched_name,trigger_name,trigger_group),
+    FOREIGN KEY (sched_name,trigger_name,trigger_group) 
+		REFERENCES qrtz_triggers(sched_name,trigger_name,trigger_group) ON DELETE CASCADE
+);
+
+CREATE TABLE qrtz_blob_triggers
+  (
+    sched_name TEXT NOT NULL,
+    trigger_name TEXT NOT NULL,
+    trigger_group TEXT NOT NULL,
+    blob_data BYTEA NULL,
+    PRIMARY KEY (sched_name,trigger_name,trigger_group),
+    FOREIGN KEY (sched_name,trigger_name,trigger_group) 
+		REFERENCES qrtz_triggers(sched_name,trigger_name,trigger_group) ON DELETE CASCADE
+);
+
+CREATE TABLE qrtz_calendars
+  (
+    sched_name TEXT NOT NULL,
+    calendar_name  TEXT NOT NULL, 
+    calendar BYTEA NOT NULL,
+    PRIMARY KEY (sched_name,calendar_name)
+);
+
+CREATE TABLE qrtz_paused_trigger_grps
+  (
+    sched_name TEXT NOT NULL,
+    trigger_group TEXT NOT NULL, 
+    PRIMARY KEY (sched_name,trigger_group)
+);
+
+CREATE TABLE qrtz_fired_triggers 
+  (
+    sched_name TEXT NOT NULL,
+    entry_id TEXT NOT NULL,
+    trigger_name TEXT NOT NULL,
+    trigger_group TEXT NOT NULL,
+    instance_name TEXT NOT NULL,
+    fired_time BIGINT NOT NULL,
+	sched_time BIGINT NOT NULL,
+    priority INTEGER NOT NULL,
+    state TEXT NOT NULL,
+    job_name TEXT NULL,
+    job_group TEXT NULL,
+    is_nonconcurrent BOOL NOT NULL,
+    requests_recovery BOOL NULL,
+    PRIMARY KEY (sched_name,entry_id)
+);
+
+CREATE TABLE qrtz_scheduler_state 
+  (
+    sched_name TEXT NOT NULL,
+    instance_name TEXT NOT NULL,
+    last_checkin_time BIGINT NOT NULL,
+    checkin_interval BIGINT NOT NULL,
+    PRIMARY KEY (sched_name,instance_name)
+);
+
+CREATE TABLE qrtz_locks
+  (
+    sched_name TEXT NOT NULL,
+    lock_name  TEXT NOT NULL, 
+    PRIMARY KEY (sched_name,lock_name)
+);
+
+create index idx_qrtz_j_req_recovery on qrtz_job_details(requests_recovery);
+create index idx_qrtz_t_next_fire_time on qrtz_triggers(next_fire_time);
+create index idx_qrtz_t_state on qrtz_triggers(trigger_state);
+create index idx_qrtz_t_nft_st on qrtz_triggers(next_fire_time,trigger_state);
+create index idx_qrtz_ft_trig_name on qrtz_fired_triggers(trigger_name);
+create index idx_qrtz_ft_trig_group on qrtz_fired_triggers(trigger_group);
+create index idx_qrtz_ft_trig_nm_gp on qrtz_fired_triggers(sched_name,trigger_name,trigger_group);
+create index idx_qrtz_ft_trig_inst_name on qrtz_fired_triggers(instance_name);
+create index idx_qrtz_ft_job_name on qrtz_fired_triggers(job_name);
+create index idx_qrtz_ft_job_group on qrtz_fired_triggers(job_group);
+create index idx_qrtz_ft_job_req_recovery on qrtz_fired_triggers(requests_recovery);
+```
+
+### 第二部：配置QuartzFactory属性，直接看代码：
+
+```c#
+class Program
+{
+    public static void Main(string[] args)
+    {
+        NameValueCollection pars = new NameValueCollection
+        {
+            //scheduler名字
+            ["quartz.scheduler.instanceName"] = "MyScheduler",
+            //线程池个数
+            ["quartz.threadPool.threadCount"] = "20",
+            //类型为JobStoreXT,事务
+            ["quartz.jobStore.type"] = "Quartz.Impl.AdoJobStore.JobStoreTX, Quartz",
+            //JobDataMap中的数据都是字符串
+            //["quartz.jobStore.useProperties"] = "true",
+            //数据源名称
+            ["quartz.jobStore.dataSource"] = "myDS",
+            //数据表名前缀
+            ["quartz.jobStore.tablePrefix"] = "QRTZ_",
+            //使用Sqlserver的Ado操作代理类
+            ["quartz.jobStore.driverDelegateType"] = "Quartz.Impl.AdoJobStore.SqlServerDelegate, Quartz",
+            //数据源连接字符串
+            ["quartz.dataSource.myDS.connectionString"] = "Server=[yourserver];Database=quartzDb;Uid=sa;Pwd=[yourpass]",
+            //数据源的数据库
+            ["quartz.dataSource.myDS.provider"] = "SqlServer",
+            //序列化类型
+            ["quartz.serializer.type"] = "json",//binary
+            //自动生成scheduler实例ID，主要为了保证集群中的实例具有唯一标识
+            ["quartz.scheduler.instanceId"] = "AUTO",
+            //是否配置集群
+            ["quartz.jobStore.clustered"] = "true",
+        };
+        StdSchedulerFactory factory = new StdSchedulerFactory(pars);
+        IScheduler scheduler = factory.GetScheduler().Result;
+        scheduler.Start();
+        IJobDetail job = JobBuilder.Create<MyJob>()
+            .WithIdentity("job1", "g1")
+            .Build();
+        ITrigger trigger = TriggerBuilder.Create().WithIdentity("trigger1", "g1").WithCronSchedule("0/1 * * * * ?").Build();
+        if (scheduler.CheckExists(job.Key).Result)
+        {
+            scheduler.DeleteJob(job.Key).Wait();
+        }
+        scheduler.ScheduleJob(job, trigger).Wait();
+    }
+}
+
+public class MyJob : IJob
+{
+    public async Task Execute(IJobExecutionContext context)
+    {
+        await Task.Run(() =>
+        {
+            Console.WriteLine($"hello! 当前时间：{DateTime.Now}");
+            Console.WriteLine($"触发时间：{context.ScheduledFireTimeUtc?.LocalDateTime},下次触发时间：{context.NextFireTimeUtc?.LocalDateTime}");
+            Console.WriteLine();
+
+        });
+    }
+}
+```
+
+上边的代码配置信息在代码中都有注释，这个栗子实现了一个简单的任务调度：每秒打印一次任务的触发时间和下次触发时间。然后运行项目即可，到这里Db持久化和集群都配置完成了。运行程序Quartz会自动在数据库中记录调度任务相关的数据
+
+到这里我们看到了Db持久化已经实现了，但是上边的栗子，我们在代码中通过 ["quartz.jobStore.clustered"] = "true" 配置了集群，是为了让原文件和副本在同一时间只有一个在运行，所以我们调度的任务没有重复执行。如果我们关掉正在执行的那个程序，那么另一个程序会开始执行。我们可以得出结论：Quartz的集群并不会造成任务重复执行，而且当一个服务器挂了后，另一个服务器会自动开始执行，这种机制大大增加了任务调度的容灾性能。
+
+# 一些需要注意的地方
+
+1.Quartz3.x支持async和await，为提高性能，我们最好将Job中的Execute方法都写成异步方法；
+
+2.不管使用的是RAMJobStore还是AdoJobStore，千万不要通过代码来直接操作JobStore（比如我们直接通过代码修改数据库中的数据），JobStore让Quartz自动操作即可。无论使用场景是web应用还是桌面程序，我们只使用Scheduler提供的接口方法来实现Job和Trigger等的增/删/改/查/暂停/恢复即可。
+
