@@ -79,6 +79,12 @@ public class MyJob : IJob
 
 Quartz的基本工作流程：scheduler是quartz的独立运行容器，trigger和job都可以注册在scheduler容器中，其中trigger是触发器，用于定义调度任务的时间规则，job是被调度的任务，一个job可以有多个触发器，而一个触发器只能属于一个job。Quartz中一个调度线程QuartzSchedulerThread，调度线程可以找到将要被触发的trigger，通过trigger找到要执行的job，然后在ThreadPool中获取一个线程来执行这个job。JobStore主要作用是存放job和trigger的信息。
 
+> 整个quartz的整体依赖关系 
+1. scheduler是容器 , 这个里面可以注册各种的job 和 trigger , 方法AddJob 增加job 和 addTrigger , 插入trigger . 
+2. 一个trigger 只能绑定一个 job , 但是一个 job 可以指定多个 trigger , 生成job的时候可以有一个方法 StoreDurably , 指定这个job 如果没有trigger 的时候是否销毁 , 同样关联的有scheduler 有一个方法叫做ScheduleJobs, 这个可以注册可销毁的job , 但是参数中必须要有一个 trigger 相互绑定 . 
+3. jobStore 不需要我们操作, 我们只要知道就行了, 这个参数是为了方便使用
+
+
 ## trigger
 
 在Quartz中Trigger的作用是定义Job何时执行。Quartz.net提供了四种触发策略：SimpleSchedule，CalendarIntervalSchedule，DailyTimeIntervalSchedule和CronSchedule。TriggerBuilder顾名思义就是用来创建Trigger的。
