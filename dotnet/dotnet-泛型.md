@@ -1,0 +1,1 @@
+从 c# network框架的实现来看dotnet泛型的命令
